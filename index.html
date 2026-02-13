@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Design System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              primary: '#FF4D2D',
+              secondary: '#3B82F6',
+              accent: '#A855F7',
+              success: '#10B981',
+              warning: '#F59E0B',
+              error: '#EF4444',
+              info: '#0EA5E9',
+              'addon-indicator': '#A855F7', // LOCKED: Exclusive for Add-ons capsules
+            },
+            surface: {
+              bg: '#0F0F0F',
+              card: '#1A1A1A',
+              overlay: '#262626',
+              border: '#333333',
+              input: '#121212',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            'nova': '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
+            'nova-glow': '0 0 20px -5px rgba(255, 77, 45, 0.3)',
+          },
+          borderRadius: {
+            'xl': '0.5rem',   /* Reduced from 1rem to 8px */
+            '2xl': '0.75rem', /* Reduced from 1.5rem to 12px */
+            '3xl': '1rem',    /* Reduced from 2rem to 16px */
+          },
+          animation: {
+            'spin-slow': 'spin 3s linear infinite',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0F0F0F;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-y: auto;
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0F0F0F;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #444;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    @keyframes scan {
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: translateY(200%);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slide-in-from-left {
+      from {
+        transform: translateX(-20px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slide-in-from-bottom {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .animate-scan {
+      animation: scan 3s linear infinite;
+    }
+
+    .animate-in {
+      animation: fade-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .fade-in {
+      animation: fade-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .slide-in-from-left-4 {
+      animation: slide-in-from-left 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .slide-in-from-bottom-4 {
+      animation: slide-in-from-bottom 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Performance optimization for animations */
+    .animate-in,
+    .fade-in,
+    .slide-in-from-left-4,
+    .slide-in-from-bottom-4 {
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+      perspective: 1000px;
+    }
+
+    /* Override autofill background */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px #0A0A0A inset !important;
+      -webkit-text-fill-color: white !important;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+  </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body class="dark">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
